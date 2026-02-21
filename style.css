@@ -1,0 +1,1143 @@
+:root {
+    --navy: #1B2440;
+    --navy-light: #2c385e;
+    --navy-dark: #12182b;
+    --red: #C52533;
+    --red-dark: #a11f2a;
+    --bg-light: #f6f7f9;
+    --white: #ffffff;
+    --text-dark: #222;
+
+    --font-head: 'Oswald', sans-serif;
+    --font-sync: 'Syncopate', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.bridge-text,
+.massive-text,
+.footer-title {
+    font-family: var(--font-head);
+    text-transform: uppercase;
+}
+
+/* ---------------------------------
+   LOADER
+--------------------------------- */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--navy-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-text {
+    font-family: var(--font-sync);
+    color: var(--white);
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.pulse {
+    animation: pulseOpacity 1s infinite alternate;
+}
+
+.loader-bar {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.loader-progress {
+    width: 0%;
+    height: 100%;
+    background: var(--red);
+    animation: loadBar 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+
+@keyframes loadBar {
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes pulseOpacity {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------------------------------
+   NAV
+--------------------------------- */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    mix-blend-mode: difference;
+    /* Makes it visible on dark/light */
+    color: #fff;
+    pointer-events: none;
+    /* Let clicks pass through except on children */
+}
+
+.fixed-nav>div {
+    pointer-events: auto;
+}
+
+.nav-brand {
+    font-family: var(--font-head);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.lang-toggle {
+    font-family: var(--font-head);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.lang-toggle.active,
+.lang-toggle:hover {
+    opacity: 1;
+}
+
+.menu-btn {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 10000;
+    /* Ensure above overlay */
+    position: relative;
+    padding: 10px;
+}
+
+.menu-line {
+    width: 30px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    align-self: flex-end;
+}
+
+.menu-line.short {
+    width: 20px;
+}
+
+.menu-btn:hover .menu-line {
+    width: 30px;
+}
+
+/* Hamburger Open State (turns into X) */
+.menu-btn.open .menu-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-btn.open .menu-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.menu-btn.open .menu-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Sidebar Menu (New Sleek Design) */
+.menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 14, 23, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    max-width: 100vw;
+    height: 100vh;
+    background-color: var(--white);
+    z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 10rem 4rem 4rem 4rem;
+    pointer-events: none;
+}
+
+.side-menu.active {
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.side-menu-header h3 {
+    font-size: 0.9rem;
+    color: var(--navy-light);
+    letter-spacing: 4px;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+
+.side-links {
+    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.side-links li {
+    overflow: hidden;
+}
+
+.side-item {
+    font-family: var(--font-head);
+    font-size: 2.5rem;
+    color: var(--navy);
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s, opacity 0.6s 0.2s, color 0.3s;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 1rem;
+}
+
+.side-menu.active .side-item {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.side-item .arrow {
+    font-family: sans-serif;
+    font-size: 2rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s;
+    color: var(--red);
+}
+
+.side-item:hover {
+    color: var(--red);
+}
+
+.side-item:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.side-footer p {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--navy-light);
+    margin-bottom: 5px;
+}
+
+/* ---------------------------------
+   1. HERO: Build Logo Engine
+--------------------------------- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-blocks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.logo-hero-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    gap: 3vw;
+    margin-bottom: 5vh;
+}
+
+.css-tower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 2px;
+}
+
+.tower-crown {
+    width: 6vw;
+    height: 3vw;
+    max-width: 60px;
+    max-height: 30px;
+    background-color: var(--navy);
+    clip-path: polygon(0 0, 25% 0, 25% 30%, 40% 30%, 40% 0, 60% 0, 60% 30%, 75% 30%, 75% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.tower-block {
+    width: 6vw;
+    height: 4vw;
+    max-width: 60px;
+    max-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navy-block {
+    background-color: var(--navy);
+}
+
+.red-block {
+    background-color: var(--red);
+}
+
+.window {
+    width: 2vw;
+    height: 2.5vw;
+    max-width: 20px;
+    max-height: 25px;
+    background-color: var(--bg-light);
+}
+
+.tower-base {
+    width: 8vw;
+    height: 3vw;
+    max-width: 80px;
+    max-height: 30px;
+    background-color: var(--navy);
+    margin-top: 2px;
+}
+
+.center-bridge {
+    text-align: center;
+    margin-bottom: 2vw;
+    position: relative;
+}
+
+.bridge-text-mask {
+    overflow: hidden;
+}
+
+.bridge-text {
+    font-size: clamp(3rem, 7vw, 7rem);
+    color: #000;
+    line-height: 1;
+    margin: 0;
+}
+
+.sub-text {
+    font-size: clamp(1rem, 2vw, 2rem);
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+
+.bridge-line {
+    position: absolute;
+    height: 4px;
+    background-color: var(--navy);
+    top: 55%;
+    width: 8vw;
+}
+
+.left-line {
+    right: -8vw;
+    transform-origin: left;
+}
+
+.right-line {
+    left: -8vw;
+    transform-origin: right;
+}
+
+.hero-actions {
+    position: absolute;
+    bottom: 5vh;
+    z-index: 10;
+    text-align: center;
+}
+
+.scroll-down-btn {
+    font-family: var(--font-head);
+    text-decoration: none;
+    color: var(--navy);
+    font-size: 1.2rem;
+    display: inline-block;
+    animation: bounceVert 2s infinite;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+@keyframes bounceVert {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Hero Animation Classes */
+.block-anim {
+    opacity: 0;
+}
+
+.t-1 {
+    transform: translateY(50px);
+}
+
+.t-2 {
+    transform: translateY(-50px);
+}
+
+.t-3 {
+    transform: translateY(-80px);
+}
+
+.t-4 {
+    transform: translateY(-110px);
+}
+
+.t-5 {
+    transform: translateY(-140px);
+}
+
+@keyframes dropIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.css-tower.loaded .t-1 {
+    animation: dropIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.css-tower.loaded .t-2 {
+    animation: dropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards;
+}
+
+.css-tower.loaded .t-3 {
+    animation: dropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.6s forwards;
+}
+
+.css-tower.loaded .t-4 {
+    animation: dropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
+}
+
+.css-tower.loaded .t-5 {
+    animation: dropIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.0s forwards;
+}
+
+.line-anim {
+    transform: scaleX(0);
+}
+
+.css-tower.loaded .line-anim {
+    animation: drawLineBase 0.6s ease-out 1.5s forwards;
+}
+
+@keyframes drawLineBase {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.text-anim {
+    transform: translateY(100%);
+}
+
+.loaded .text-anim {
+    animation: slideUpText 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 1.8s forwards;
+}
+
+.loaded .delay-text {
+    animation-delay: 2.0s;
+}
+
+@keyframes slideUpText {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.action-anim {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.loaded-ui .action-anim {
+    animation: dropIn 0.8s ease forwards 2.4s;
+}
+
+/* ---------------------------------
+   2. SPLIT INTERACTIVE PANELS
+--------------------------------- */
+.split-hero {
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem;
+    transition: flex 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: crosshair;
+}
+
+.panel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transition: transform 0.8s ease, filter 0.8s ease;
+    filter: grayscale(100%) brightness(0.3);
+}
+
+.left-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(27, 36, 64, 0.95) 0%, rgba(27, 36, 64, 0.7) 100%);
+    z-index: 1;
+}
+
+.right-panel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-90deg, rgba(197, 37, 51, 0.95) 0%, rgba(197, 37, 51, 0.7) 100%);
+    z-index: 1;
+}
+
+.panel-content {
+    position: relative;
+    z-index: 2;
+    opacity: 0.5;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    max-width: 500px;
+    color: var(--white);
+}
+
+.left-panel .panel-content {
+    align-self: flex-start;
+}
+
+.right-panel .panel-content {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.eyebrow {
+    font-family: var(--font-sync);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 2rem;
+    display: block;
+}
+
+.lang-title {
+    font-size: clamp(4rem, 8vw, 8rem);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+}
+
+.lang-desc {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.action-btn {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+    padding: 1rem 3rem;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.action-btn:hover {
+    background: var(--white);
+    color: var(--text-dark);
+}
+
+.split-hero:hover .panel {
+    flex: 0.8;
+}
+
+.split-hero .panel:hover {
+    flex: 1.2;
+}
+
+.split-hero .panel:hover .panel-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.split-hero .panel:hover .panel-bg {
+    filter: grayscale(0%) brightness(0.6);
+    transform: scale(1.05);
+}
+
+.center-split-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--white);
+    transform: translateX(-50%);
+    z-index: 5;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+/* ---------------------------------
+   3. STATS
+--------------------------------- */
+.stats-section {
+    padding: 6rem 5%;
+    background-color: var(--white);
+    border-top: 2px solid #ddd;
+}
+
+.container-stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.stat-number {
+    display: inline-block;
+    font-size: 6rem;
+    font-family: var(--font-head);
+    color: var(--navy);
+    line-height: 1;
+}
+
+.stat-symbol {
+    font-size: 3rem;
+    color: var(--red);
+    font-family: var(--font-head);
+    vertical-align: super;
+}
+
+.stat-box p {
+    font-size: 1.2rem;
+    color: #666;
+    font-family: var(--font-sync);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* ---------------------------------
+   4. HORIZONTAL SCROLL JOURNEY
+--------------------------------- */
+.horizontal-scroll-section {
+    position: relative;
+    /* GSAP will automatically control the height and pinning duration */
+    overflow: hidden;
+}
+
+.sticky-container {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--navy-dark);
+    color: var(--white);
+}
+
+.scroll-track {
+    display: flex;
+    height: 100%;
+    width: 400vw;
+}
+
+.track-panel {
+    width: 100vw;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.title-panel {
+    padding-left: 10vw;
+    position: relative;
+}
+
+.massive-text {
+    font-size: clamp(6rem, 15vw, 15rem);
+    line-height: 0.8;
+    color: var(--white);
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 15vh;
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.scroll-hint .line {
+    width: 100px;
+    height: 2px;
+    background: var(--red);
+}
+
+.content-panel {
+    justify-content: center;
+    padding: 0 5vw;
+}
+
+.journey-card {
+    background: var(--white);
+    color: var(--navy);
+    padding: 5rem 4rem;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.5);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s;
+}
+
+.journey-card:hover {
+    transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+}
+
+.navy-card {
+    border-left: 20px solid var(--navy);
+}
+
+.red-card {
+    border-left: 20px solid var(--red);
+}
+
+.split-card {
+    border-left: 10px solid var(--navy);
+    border-right: 10px solid var(--red);
+}
+
+.card-num {
+    font-family: var(--font-head);
+    font-size: 6rem;
+    color: rgba(0, 0, 0, 0.05);
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    line-height: 1;
+}
+
+.journey-card h3 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+.journey-card p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------------------------------
+   5. CTA SYNTHESIS
+--------------------------------- */
+.bridge-gap-section {
+    padding: 10rem 5%;
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bridge-gap-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background-image: radial-gradient(var(--red) 2px, transparent 2px);
+    background-size: 40px 40px;
+    opacity: 0.1;
+}
+
+.gap-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.gap-content h2 {
+    font-size: clamp(3rem, 6vw, 5rem);
+    margin-bottom: 2rem;
+    line-height: 1.1;
+}
+
+.gap-content p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    font-family: var(--font-head);
+    display: inline-block;
+}
+
+.btn-navy {
+    background-color: var(--white);
+    color: var(--navy);
+    border: 2px solid var(--white);
+}
+
+.btn-navy:hover {
+    background-color: transparent;
+    color: var(--white);
+}
+
+.btn-red {
+    background-color: var(--red);
+    color: var(--white);
+    border: 2px solid var(--red);
+}
+
+.btn-red:hover {
+    background-color: transparent;
+    color: var(--red);
+}
+
+/* ---------------------------------
+   FOOTER
+--------------------------------- */
+footer {
+    background-color: var(--bg-light);
+    padding: 5rem 5%;
+    text-align: center;
+    border-top: 2px solid #ddd;
+}
+
+.tower-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    margin-bottom: 2rem;
+}
+
+.small {
+    width: 30px !important;
+    height: 20px !important;
+}
+
+.tower-crown.small {
+    height: 15px !important;
+}
+
+.footer-title {
+    font-size: 2.5rem;
+    color: var(--navy);
+    margin-bottom: 5px;
+}
+
+.copyright {
+    margin-top: 3rem;
+    opacity: 0.5;
+    font-size: 0.9rem;
+    font-family: var(--font-sync);
+}
+
+/* ---------------------------------
+   UTILS
+--------------------------------- */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fade-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.d-1 {
+    transition-delay: 0.1s;
+}
+
+.d-2 {
+    transition-delay: 0.3s;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .split-hero {
+        flex-direction: column;
+    }
+
+    .panel {
+        padding: 3rem;
+    }
+
+    .panel-content {
+        opacity: 1;
+        transform: none;
+        max-width: 100%;
+        text-align: center !important;
+    }
+
+    .left-panel .panel-content,
+    .right-panel .panel-content {
+        align-self: center;
+    }
+
+    .split-hero:hover .panel {
+        flex: 1;
+    }
+
+    .split-hero .panel:hover {
+        flex: 1;
+    }
+
+    .split-hero .panel:hover .panel-content {
+        transform: none;
+    }
+
+    .center-split-line {
+        display: none;
+    }
+
+    .bridge-line {
+        display: none;
+    }
+
+    .css-tower {
+        transform: scale(0.7);
+    }
+
+    .journey-card {
+        padding: 3rem 2rem;
+        height: auto;
+        transform: none;
+    }
+
+    .journey-card:hover {
+        transform: none;
+    }
+
+    /* Fix Horizontal scroll on mobile */
+    .horizontal-scroll-section {
+        height: auto !important;
+        overflow: visible;
+    }
+
+    .sticky-container {
+        position: relative !important;
+        height: auto !important;
+        padding: 6rem 0 4rem 0;
+        /* Extra top padding to clear fixed nav */
+    }
+
+    .scroll-track {
+        flex-direction: column;
+        width: 100% !important;
+        height: auto;
+        gap: 2rem;
+        transform: none !important;
+    }
+
+    .track-panel {
+        width: 100vw;
+        height: auto;
+        padding: 2rem 5%;
+    }
+
+    .title-panel {
+        padding-left: 5%;
+        margin-bottom: 1rem;
+    }
+
+    .massive-text {
+        font-size: 4rem;
+    }
+
+    .scroll-hint {
+        position: relative;
+        bottom: 0;
+        margin-top: 1.5rem;
+    }
+
+    .content-panel {
+        padding: 0;
+    }
+
+    .bridge-text {
+        font-size: clamp(2.5rem, 11vw, 7rem);
+    }
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Bridge Elite Language School</title>
+    <!-- Mixing Oswald for bold impact and Manrope for clean reading -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Manrope:wght@300;500;800&family=Syncopate:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Loading Screen Anim -->
+    <div class="loader">
+        <div class="loader-content">
+            <span class="loader-text pulse">LONDON BRIDGE</span>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="fixed-nav">
+        <div class="nav-brand">LONDON BRIDGE</div>
+        <div class="nav-right">
+            <span class="lang-toggle active" data-lang="en">EN</span> <span class="lang-toggle" data-lang="fr">FR</span>
+            <div class="menu-btn">
+                <div class="menu-line"></div>
+                <div class="menu-line short"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modern Slide-out Sidebar Menu -->
+    <div class="menu-backdrop"></div>
+    <div class="side-menu">
+        <div class="side-menu-header">
+            <h3 class="tl-text" data-en="NAVIGATION" data-fr="NAVIGATION">NAVIGATION</h3>
+        </div>
+        <ul class="side-links">
+            <li><a href="#home" class="side-item"><span class="tl-text" data-en="Home" data-fr="Accueil">Home</span>
+                    <span class="arrow">→</span></a></li>
+            <li><a href="#programs" class="side-item"><span class="tl-text" data-en="Programs"
+                        data-fr="Programmes">Programs</span> <span class="arrow">→</span></a></li>
+            <li><a href="#journey" class="side-item"><span class="tl-text" data-en="The Journey" data-fr="Le Voyage">The
+                        Journey</span> <span class="arrow">→</span></a></li>
+            <li><a href="#" class="side-item"><span class="tl-text" data-en="Contact Us"
+                        data-fr="Contactez-Nous">Contact Us</span> <span class="arrow">→</span></a></li>
+        </ul>
+        <div class="side-footer">
+            <p>1-800-LONDON-BRIDGE</p>
+            <p>contact@londonbridge.tn</p>
+        </div>
+    </div>
+
+    <!-- 1. The Build Logo Hero (from v2) -->
+    <header class="hero" id="home">
+        <!-- Background floating blocks from v2 -->
+        <div class="bg-blocks"></div>
+
+        <div class="logo-hero-container">
+            <!-- Left Tower -->
+            <div class="css-tower left-tower">
+                <div class="tower-crown block-anim t-5"></div>
+                <div class="tower-block navy-block block-anim t-4">
+                    <div class="window"></div>
+                </div>
+                <div class="tower-block red-block block-anim t-3">
+                    <div class="window"></div>
+                </div>
+                <div class="tower-block red-block block-anim t-2">
+                    <div class="window"></div>
+                </div>
+                <div class="bridge-line left-line line-anim"></div>
+                <div class="tower-base block-anim t-1"></div>
+            </div>
+
+            <!-- Center Text -->
+            <div class="center-bridge">
+                <div class="bridge-text-mask">
+                    <h1 class="bridge-text text-anim">LONDON BRIDGE</h1>
+                </div>
+                <div class="bridge-text-mask">
+                    <h2 class="sub-text text-anim delay-text tl-text" data-en="Elite English & French School"
+                        data-fr="École d'Anglais & de Français d'Élite">Elite English & French School</h2>
+                </div>
+            </div>
+
+            <!-- Right Tower -->
+            <div class="css-tower right-tower">
+                <div class="tower-crown block-anim t-5"></div>
+                <div class="tower-block navy-block block-anim t-4">
+                    <div class="window"></div>
+                </div>
+                <div class="tower-block red-block block-anim t-3">
+                    <div class="window"></div>
+                </div>
+                <div class="tower-block red-block block-anim t-2">
+                    <div class="window"></div>
+                </div>
+                <div class="bridge-line right-line line-anim"></div>
+                <div class="tower-base block-anim t-1"></div>
+            </div>
+        </div>
+
+        <div class="hero-actions action-anim">
+            <a href="#programs" class="scroll-down-btn tl-text" data-en="Explore <br>↓" data-fr="Explorer <br>↓">Explore
+                <br>↓</a>
+        </div>
+    </header>
+
+    <!-- 2. Interactive Split Panels (from v3) -->
+    <section class="split-hero" id="programs">
+        <!-- English Side (Navy) -->
+        <div class="panel left-panel">
+            <div class="panel-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1513635269975-59693e0ce1cb?q=80&w=1469&auto=format&fit=crop');">
+            </div>
+            <div class="panel-content">
+                <span class="eyebrow tl-text" data-en="The Global Standard" data-fr="La Norme Mondiale">The Global
+                    Standard</span>
+                <h2 class="lang-title tl-text" data-en="ENGLISH" data-fr="ANGLAIS">ENGLISH</h2>
+                <p class="lang-desc tl-text"
+                    data-en="Master the language of global business, technology, and culture with our elite instructors."
+                    data-fr="Maîtrisez la langue des affaires, de la technologie et de la culture mondiale avec nos professeurs d'élite.">
+                    Master the language of global business, technology, and culture with our elite
+                    instructors.</p>
+                <button class="action-btn"><span class="tl-text" data-en="Enter Program"
+                        data-fr="Entrer le Programme">Enter Program</span> <span class="arrow">→</span></button>
+            </div>
+        </div>
+
+        <!-- French Side (Red) -->
+        <div class="panel right-panel">
+            <div class="panel-bg"
+                style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1420&auto=format&fit=crop');">
+            </div>
+            <div class="panel-content">
+                <span class="eyebrow tl-text" data-en="Language of Elegance" data-fr="Langue de L'Élégance">Langue de
+                    L'Élégance</span>
+                <h2 class="lang-title tl-text" data-en="FRENCH" data-fr="FRANÇAIS">FRANÇAIS</h2>
+                <p class="lang-desc tl-text"
+                    data-en="Immerse yourself in the beauty of the French language. Excellence in teaching, right here in Tunisia."
+                    data-fr="Plongez dans la beauté de la langue française. L'excellence de l'enseignement, ici même en Tunisie.">
+                    Immerse yourself in the beauty of the French language. Excellence in teaching,
+                    right here in Tunisia.</p>
+                <button class="action-btn"><span class="tl-text" data-en="Enter Program"
+                        data-fr="Entrer le Programme">Entrer</span> <span class="arrow">→</span></button>
+            </div>
+        </div>
+
+        <!-- Center Mark purely aesthetic -->
+        <div class="center-split-line"></div>
+    </section>
+
+    <!-- 3. Animated Stats (from v2/update) -->
+    <section class="stats-section">
+        <div class="container-stats">
+            <div class="stat-box fade-up scroll-trigger">
+                <div class="stat-number" data-target="98">0</div><span class="stat-symbol">%</span>
+                <p class="tl-text" data-en="Success Rate" data-fr="Taux de Réussite">Success Rate</p>
+            </div>
+            <div class="stat-box fade-up scroll-trigger d-1">
+                <div class="stat-number" data-target="1500">0</div><span class="stat-symbol">+</span>
+                <p class="tl-text" data-en="Alumni" data-fr="Anciens Élèves">Alumni</p>
+            </div>
+            <div class="stat-box fade-up scroll-trigger d-2">
+                <div class="stat-number" data-target="30">0</div><span class="stat-symbol">+</span>
+                <p class="tl-text" data-en="Expert Staff" data-fr="Personnel Expert">Expert Staff</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. The GSAP Horizontal Journey (from v3) -->
+    <section class="horizontal-scroll-section" id="journey">
+        <div class="sticky-container">
+            <div class="scroll-track">
+
+                <div class="track-panel title-panel">
+                    <h2 class="massive-text tl-text" data-en="THE<br>JOURNEY" data-fr="LE<br>VOYAGE">THE<br>JOURNEY</h2>
+                    <div class="scroll-hint"><span class="tl-text" data-en="Scroll to explore"
+                            data-fr="Faites défiler pour explorer">Scroll to explore</span> <span class="line"></span>
+                    </div>
+                </div>
+
+                <div class="track-panel content-panel">
+                    <div class="journey-card navy-card">
+                        <div class="card-num">01</div>
+                        <h3 class="tl-text" data-en="Solid Foundation" data-fr="Base Solide">Solid Foundation</h3>
+                        <p class="tl-text"
+                            data-en="We begin by pinpointing your exact level with our proprietary assessment, establishing a conversational and grammatical baseline."
+                            data-fr="Nous commençons par identifier votre niveau exact grâce à notre évaluation exclusive, établissant une base de conversation et de grammaire.">
+                            We begin by pinpointing your exact level with our proprietary assessment, establishing a
+                            conversational and grammatical baseline.</p>
+                    </div>
+                </div>
+
+                <div class="track-panel content-panel">
+                    <div class="journey-card red-card">
+                        <div class="card-num">02</div>
+                        <h3 class="tl-text" data-en="Structured Growth" data-fr="Croissance Structurée">Structured
+                            Growth</h3>
+                        <p class="tl-text"
+                            data-en="Learn dynamically from highly vetted instructors. The curriculum stacks logically, building fluency block by block."
+                            data-fr="Apprenez de manière dynamique avec des instructeurs hautement qualifiés. Le programme s'enchaîne logiquement, construisant la fluidité bloc par bloc.">
+                            Learn dynamically from highly vetted instructors. The curriculum stacks logically, building
+                            fluency block by block.</p>
+                    </div>
+                </div>
+
+                <div class="track-panel content-panel">
+                    <div class="journey-card split-card">
+                        <div class="card-num">03</div>
+                        <h3 class="tl-text" data-en="The Crown" data-fr="La Couronne">The Crown</h3>
+                        <p class="tl-text"
+                            data-en="Reach elite mastery. Achieve international certifications and step out into the world to bridge the gap across cultures."
+                            data-fr="Atteignez une maîtrise d'élite. Obtenez des certifications internationales et ouvrez-vous au monde pour combler le fossé entre les cultures.">
+                            Reach elite mastery. Achieve international certifications and step out into the world to
+                            bridge the gap across cultures.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Bridge Gap CTA (Synthesis) -->
+    <section class="bridge-gap-section scroll-trigger fade-scale">
+        <div class="gap-content">
+            <h2 class="tl-text" data-en="CROSS THE BRIDGE TO FLUENCY" data-fr="TRAVERSEZ LE PONT VERS LA FLUIDITÉ">CROSS
+                THE BRIDGE TO FLUENCY</h2>
+            <p class="tl-text"
+                data-en="Equip yourself with the tools to communicate globally. Start building your future today."
+                data-fr="Équipez-vous des outils pour communiquer à l'échelle mondiale. Commencez à construire votre avenir dès aujourd'hui.">
+                Equip yourself with the tools to communicate globally. Start building your future today.</p>
+            <div class="action-buttons">
+                <a href="#" class="btn btn-navy tl-text" data-en="Start English" data-fr="Commencer l'Anglais">Start
+                    English</a>
+                <a href="#" class="btn btn-red tl-text" data-en="Start French" data-fr="Commencer le Français">Start
+                    French</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="tower-icon">
+            <div class="tower-crown small"></div>
+            <div class="tower-block navy-block small"></div>
+            <div class="tower-block red-block small"></div>
+            <div class="tower-base small"></div>
+        </div>
+        <h3 class="footer-title">LONDON BRIDGE</h3>
+        <p class="tl-text" data-en="Elite English & French School • Tunis, Tunisia"
+            data-fr="École d'Anglais et de Français d'Élite • Tunis, Tunisie">Elite English & French School • Tunis,
+            Tunisia</p>
+        <p class="copyright tl-text" data-en="© 2026 London Bridge Elite School. Bridging cultures."
+            data-fr="© 2026 École d'Élite London Bridge. Rapprocher les cultures.">© 2026 London Bridge Elite School.
+            Bridging cultures.</p>
+    </footer>
+
+    <!-- GSAP for smooth horizontal scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
