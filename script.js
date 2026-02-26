@@ -135,25 +135,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const sections = gsap.utils.toArray('.track-panel');
 
         if (track && sections.length > 0) {
-            let mm = gsap.matchMedia();
-
-            mm.add("(min-width: 901px)", () => {
-                gsap.to(sections, {
-                    xPercent: -100 * (sections.length - 1),
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: ".horizontal-scroll-section",
-                        pin: true,
-                        scrub: 1,
-                        snap: {
-                            snapTo: 1 / (sections.length - 1),
-                            duration: { min: 0.2, max: 0.5 },
-                            delay: 0.1,
-                            ease: "power1.inOut"
-                        },
-                        end: () => "+=" + track.offsetWidth
-                    }
-                });
+            gsap.to(sections, {
+                xPercent: -100 * (sections.length - 1),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".horizontal-scroll-section",
+                    pin: true,
+                    scrub: 1,
+                    snap: {
+                        snapTo: 1 / (sections.length - 1),
+                        duration: { min: 0.2, max: 0.5 },
+                        delay: 0.1,
+                        ease: "power1.inOut"
+                    },
+                    end: () => "+=" + track.offsetWidth
+                }
             });
         }
     }

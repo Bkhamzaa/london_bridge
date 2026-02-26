@@ -1091,50 +1091,18 @@ footer {
         transform: none;
     }
 
-    /* Fix Horizontal scroll on mobile */
-    .horizontal-scroll-section {
-        height: auto !important;
-        overflow: visible;
-    }
-
-    .sticky-container {
-        position: relative !important;
-        height: auto !important;
-        padding: 6rem 0 4rem 0;
-        /* Extra top padding to clear fixed nav */
-    }
-
-    .scroll-track {
-        flex-direction: column;
-        width: 100% !important;
-        height: auto;
-        gap: 2rem;
-        transform: none !important;
-    }
-
-    .track-panel {
-        width: 100vw;
-        height: auto;
-        padding: 2rem 5%;
-    }
-
-    .title-panel {
-        padding-left: 5%;
-        margin-bottom: 1rem;
-    }
-
+    /* Typography and spacing adjustments for mobile horizontal scroll */
     .massive-text {
-        font-size: 4rem;
+        font-size: 5rem;
     }
 
     .scroll-hint {
-        position: relative;
-        bottom: 0;
-        margin-top: 1.5rem;
+        bottom: 5vh;
     }
 
-    .content-panel {
-        padding: 0;
+    .journey-card {
+        padding: 3rem 2rem;
+        width: 90vw;
     }
 
     .bridge-text {
