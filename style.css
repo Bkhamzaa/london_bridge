@@ -119,6 +119,14 @@ h3,
     color: #fff;
     pointer-events: none;
     /* Let clicks pass through except on children */
+    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fixed-nav.scrolled {
+    background-color: var(--navy-dark);
+    mix-blend-mode: normal;
+    padding: 1.5rem 4vw;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .fixed-nav>div {
@@ -1037,12 +1045,26 @@ footer {
 
 /* Responsive */
 @media (max-width: 900px) {
+    .fixed-nav {
+        padding: 1.5rem 5%;
+    }
+
+    .fixed-nav.scrolled {
+        padding: 1rem 5%;
+    }
+
     .split-hero {
         flex-direction: column;
+        height: auto;
+        min-height: 100vh;
     }
 
     .panel {
-        padding: 3rem;
+        padding: 6rem 2rem;
+        min-height: 50vh;
+        height: auto;
+        flex: none !important;
+        /* Ensure panels expand to their content height entirely */
     }
 
     .panel-content {
@@ -1058,11 +1080,11 @@ footer {
     }
 
     .split-hero:hover .panel {
-        flex: 1;
+        flex: none !important;
     }
 
     .split-hero .panel:hover {
-        flex: 1;
+        flex: none !important;
     }
 
     .split-hero .panel:hover .panel-content {
