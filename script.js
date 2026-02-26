@@ -33,12 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Prevent body scroll when menu is open
         if (sideMenu.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
-            // Hamburger becomes dark so it's visible on the white sidebar
-            document.querySelectorAll('.menu-line').forEach(line => line.style.background = '#1B2440');
         } else {
             document.body.style.overflow = '';
-            // Hamburger becomes white again for dark header
-            document.querySelectorAll('.menu-line').forEach(line => line.style.background = '#fff');
         }
     });
 
@@ -48,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sideMenu.classList.remove('active');
         if (menuBackdrop) menuBackdrop.classList.remove('active');
         document.body.style.overflow = '';
-        document.querySelectorAll('.menu-line').forEach(line => line.style.background = '#fff');
     };
 
     // Close menu when clicking a link
@@ -113,9 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.scroll-trigger, .fade-scale').forEach(el => observer.observe(el));
 
-    // Subtly parallax the towers on scroll
+    // Subtly parallax the towers on scroll and manage navbar
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
+
+        const fixedNav = document.querySelector('.fixed-nav');
+        if (scrolled > 50) {
+            fixedNav.classList.add('scrolled');
+        } else {
+            fixedNav.classList.remove('scrolled');
+        }
 
         document.querySelectorAll('.css-tower').forEach(tower => {
             tower.style.transform = `translateY(${scrolled * 0.2}px)`;
