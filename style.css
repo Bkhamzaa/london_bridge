@@ -119,7 +119,7 @@ h3,
     color: #fff;
     pointer-events: none;
     /* Let clicks pass through except on children */
-    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 
 .fixed-nav.scrolled {
@@ -127,6 +127,10 @@ h3,
     mix-blend-mode: normal;
     padding: 1.5rem 4vw;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.fixed-nav.hidden {
+    transform: translateY(-100%);
 }
 
 .fixed-nav>div {

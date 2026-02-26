@@ -109,15 +109,28 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroll-trigger, .fade-scale').forEach(el => observer.observe(el));
 
     // Subtly parallax the towers on scroll and manage navbar
+    let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
 
         const fixedNav = document.querySelector('.fixed-nav');
+
+        // Background logic
         if (scrolled > 50) {
             fixedNav.classList.add('scrolled');
         } else {
             fixedNav.classList.remove('scrolled');
         }
+
+        // Hide/Show on scroll direction logic
+        if (scrolled > 50 && scrolled > lastScrollTop) {
+            // Scrolling Down
+            fixedNav.classList.add('hidden');
+        } else {
+            // Scrolling Up
+            fixedNav.classList.remove('hidden');
+        }
+        lastScrollTop = scrolled <= 0 ? 0 : scrolled; // For Mobile or negative scrolling
 
         document.querySelectorAll('.css-tower').forEach(tower => {
             tower.style.transform = `translateY(${scrolled * 0.2}px)`;
