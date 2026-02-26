@@ -1055,16 +1055,18 @@ footer {
 
     .split-hero {
         flex-direction: column;
-        height: auto;
+        display: flex;
+        height: auto !important;
         min-height: 100vh;
+        overflow: visible;
+        /* Prevent any container clipping */
     }
 
     .panel {
-        padding: 6rem 2rem;
+        padding: 8rem 2rem 5rem 2rem;
         min-height: 50vh;
-        height: auto;
-        flex: none !important;
-        /* Ensure panels expand to their content height entirely */
+        height: auto !important;
+        flex: 1 0 auto !important;
     }
 
     .panel-content {
